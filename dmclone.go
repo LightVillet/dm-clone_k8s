@@ -14,7 +14,6 @@ const (
 
 func BlockDeviceSize(path string) (int64, error) {
 	info, err := os.Stat(path)
-	fmt.Println(info.Size())
 	if err != nil {
 		return 0, err
 	}
@@ -54,8 +53,7 @@ func dmclone(name, metaFile, destFile, sourceFile string) error {
 	if err != nil {
 		return err
 	}
-	data, err := exec.Command("dmsetup", "create", name, "--table", table).CombinedOutput()
-	fmt.Println(data, err)
+	_, err = exec.Command("dmsetup", "create", name, "--table", table).CombinedOutput()
 	return nil
 }
 
