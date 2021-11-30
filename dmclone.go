@@ -54,7 +54,7 @@ func dmclone(name, metaFile, destFile, sourceFile string) error {
 		return err
 	}
 	_, err = exec.Command("dmsetup", "create", name, "--table", table).CombinedOutput()
-	return nil
+	return err
 }
 
 func main() {
